@@ -1,0 +1,12 @@
+
+# Local deployment artifacts and private data
+/_site/
+**/node_modules/
+**/.wrangler/
+**/*.local.json
+**/witness-vault.json
+**/responses.json
+**/kv-import.json
+**/Prover.toml
+**/Verifier.toml
+**/.env*

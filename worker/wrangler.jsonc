@@ -1,0 +1,50 @@
+{
+  "name": "tacit-hunt-api",
+  "main": "index.mjs",
+  "compatibility_date": "2025-11-01",
+  "workers_dev": false,
+  "observability": {
+    "enabled": false
+  },
+  "kv_namespaces": [
+    {
+      "binding": "PROOFS",
+      "id": "00000000000000000000000000000000"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "SESSIONS",
+        "class_name": "HuntSession"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "HuntSession"
+      ]
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "SESSION_LIMITER",
+      "namespace_id": "78492101",
+      "simple": {
+        "limit": 20,
+        "period": 60
+      }
+    },
+    {
+      "name": "PROBE_LIMITER",
+      "namespace_id": "78492102",
+      "simple": {
+        "limit": 120,
+        "period": 60
+      }
+    }
+  ],
+  "preview_urls": false
+}

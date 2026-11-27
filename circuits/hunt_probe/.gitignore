@@ -1,0 +1,5 @@
+/target/
+/Prover.toml
+/Verifier.toml
+*.gz
+*.witness

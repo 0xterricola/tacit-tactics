@@ -1,20 +1,155 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'"><meta name="theme-color" content="#101011"><meta name="description" content="An unofficial Tacit-inspired privacy arcade. Play locally, leave no game data behind."><title>Tacit Tactics — Privacy Arcade</title><link rel="icon" href="logo.png"><style>
-:root{color-scheme:dark;--bg:#101011;--panel:#171719;--line:#302b25;--text:#f5efe6;--muted:#a6a099;--accent:#ff9b24;--btc:#f7931a;--eth:#a8b7f6}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#282015 0%,var(--bg) 42%);color:var(--text);font:15px/1.5 system-ui,-apple-system,sans-serif;min-height:100vh}button,select,textarea{font:inherit}button,select{cursor:pointer}button:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}header,main,footer{max-width:940px;margin:auto;padding:0 20px}header{display:flex;align-items:center;justify-content:space-between;padding-top:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:750;letter-spacing:-.6px}.brand img{width:36px;height:36px}.brand b{color:var(--accent)}.tag,.eyebrow{font:11px/1.4 ui-monospace,monospace;letter-spacing:1.5px;color:var(--muted)}.hero{text-align:center;padding:38px 0 26px}.hero h1{font-size:clamp(34px,6vw,60px);letter-spacing:-.06em;line-height:1.05;margin:12px 0}.hero p{color:var(--muted);margin:0}.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:16px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}.panel h2{font-size:17px;margin:0 0 14px}.modes{display:grid;grid-template-columns:1fr 1fr;gap:5px;background:#101011;padding:4px;border-radius:10px}.modes button{background:none;border:0;border-radius:7px;color:var(--muted);padding:10px;font-weight:650}.modes button[aria-pressed=true]{background:#34271a;color:var(--accent)}.options{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:13px 0;color:var(--muted);font-size:13px}select{color:var(--text);background:#101011;border:1px solid var(--line);border-radius:8px;padding:7px}input{accent-color:var(--accent)}.scores{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.score{border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;background:#121213}.score span{color:var(--muted);font:10px ui-monospace,monospace;letter-spacing:1px}.score strong{display:block;font-size:27px;line-height:1.3}.score:first-child strong{color:var(--accent)}#status{min-height:50px;display:grid;place-items:center;color:#e8c9a1;font-weight:650;text-align:center}.board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:380px;margin:auto}.cell{aspect-ratio:1;min-width:0;display:grid;place-items:center;background:#111113;border:1px solid #37322d;border-radius:12px;padding:18%;transition:background .15s,border .15s;color:var(--text)}.cell:not(:disabled):hover{border-color:var(--accent);background:#2a2117}.cell:disabled{cursor:default}.cell.win{background:#382715;border-color:var(--accent);box-shadow:inset 0 0 20px #ff9b2422}.cell img,.cell svg{width:100%;height:100%;max-width:84px;display:block}.sealed{font:700 25px ui-monospace,monospace;color:#a8a09a}.actions{display:flex;gap:8px;margin-top:20px}.btn{padding:10px 13px;border:1px solid #3c352d;border-radius:8px;color:var(--text);background:#202021;font-weight:650;font-size:13px}.btn.primary{background:var(--accent);color:#16100a;border-color:var(--accent)}.btn:disabled{opacity:.4;cursor:default}.actions .btn{flex:1}.stack{display:grid;gap:16px}.chain{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:15px 0}.chain span{font:700 14px ui-monospace,monospace;white-space:nowrap}.chain .btc{color:var(--btc)}.chain .eth{color:var(--eth)}.chain .arrow{color:var(--muted);font-weight:400;font-size:12px}.muted{color:var(--muted);font-size:13px}.panel p{margin:8px 0 13px}.mono{font:12px/1.6 ui-monospace,monospace;overflow-wrap:anywhere;color:#e3bc83;background:#101011;border:1px solid var(--line);padding:10px;border-radius:8px;min-height:42px}.receipt-actions{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}details{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}summary{cursor:pointer;font-weight:650;font-size:13px}textarea{width:100%;min-height:100px;background:#101011;color:var(--text);border:1px solid var(--line);border-radius:8px;margin:10px 0;padding:10px;font:12px ui-monospace,monospace;resize:vertical}#verifyStatus{overflow-wrap:anywhere;min-height:20px}.learn{display:grid;gap:10px}.learn div{border-top:1px solid var(--line);padding-top:10px}.learn strong{display:block;font-size:13px}.learn p{font-size:12px;color:var(--muted);margin:3px 0}footer{padding-top:24px;padding-bottom:32px;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;font-size:11px;color:var(--muted)}@media(max-width:700px){.layout{grid-template-columns:1fr}.hero{padding-top:28px}.panel{padding:17px}header{padding-top:16px;padding-bottom:16px}.tag{font-size:9px}.chain span{font-size:12px}}
-</style></head><body><header><div class="brand"><img src="logo.png" alt="">tacit<b>tactics</b></div><div class="tag">● LOCAL ONLY</div></header><main><section class="hero"><div class="eyebrow">BITCOIN × ETHEREUM · PRIVACY ARCADE</div><h1>Make your move.</h1><p>Play in private. Verify by choice.</p></section><div class="layout"><section class="panel" aria-label="Tic-tac-toe game"><div class="modes"><button id="ai" aria-pressed="true">vs computer</button><button id="human" aria-pressed="false">two players</button></div><div class="options"><label>Difficulty <select id="difficulty"><option value="casual">Casual</option><option value="perfect">Unbeatable</option></select></label><label><input type="checkbox" id="shield"> Shielded board</label></div><div class="scores"><div class="score"><span>TACIT</span><strong id="os">0</strong></div><div class="score"><span>DRAWS</span><strong id="ds">0</strong></div><div class="score"><span>X</span><strong id="xs">0</strong></div></div><div id="status" role="status">Your turn — Tacit</div><div class="board" id="board" aria-label="Game board"></div><div class="actions"><button class="btn primary" id="new">New round</button><button class="btn" id="reset">Reset scores</button></div><p class="muted" id="hint" style="text-align:center;margin-bottom:0">Three in a row wins. Tacit plays first.</p></section><div class="stack"><section class="panel"><div class="eyebrow">01 / PROOF OF PLAY</div><h2>Commit. Reveal. Verify.</h2><p class="muted">Finish a match to create a salted SHA-256 commitment to its move history. Share only what you choose.</p><div class="mono" id="commitment" aria-live="polite">Awaiting a completed round.</div><div class="receipt-actions"><button class="btn" id="copyHash" disabled>Copy commitment</button><button class="btn" id="copyReceipt" disabled>Copy receipt</button></div><div class="muted" id="copyStatus" role="status"></div><details><summary>Verify a revealed receipt</summary><p class="muted">Paste a receipt and, optionally, a previously shared commitment to compare against.</p><textarea id="receiptInput" placeholder="Paste receipt JSON" aria-label="Receipt JSON"></textarea><textarea id="expected" placeholder="Optional: previous 64-character commitment" aria-label="Expected commitment" style="min-height:48px"></textarea><button class="btn" id="verify">Verify locally</button><p class="muted" id="verifyStatus" role="status"></p></details><p class="muted" style="margin-bottom:0">Educational hash commitment, not a zero-knowledge proof or an on-chain attestation. The receipt reveals all moves.</p></section><section class="panel"><div class="eyebrow">02 / PROTOCOL NOTES</div><div class="chain"><span class="btc">₿ BITCOIN</span><span class="arrow">← proof →</span><span class="eth">◇ ETHEREUM</span></div><div class="learn"><div><strong>Confidential assets</strong><p>Tacit supports confidential tokens on Bitcoin and private DeFi on Ethereum.</p></div><div><strong>Proof-based bridging</strong><p>Tacit’s cross-chain design verifies state using cryptographic proofs.</p></div><div><strong>On-device privacy</strong><p>Tacit describes private payment proofs generated on the user’s device. This arcade uses local computation only.</p></div></div><p class="muted" style="margin-bottom:0"><a href="https://tacit.finance/" target="_blank" rel="noopener noreferrer">Explore Tacit ↗</a> · <a href="https://github.com/z0r0z/tacit" target="_blank" rel="noopener noreferrer">Protocol source ↗</a></p></section></div></div></main><footer><span>Unofficial fan project · No wallet · No funds · No analytics in this app</span><span><button class="btn" id="share">Copy page link</button></span><span>Hosting provider may log page requests. Game data stays in memory unless you copy it.</span></footer><script>
-'use strict';
-const $=id=>document.getElementById(id),L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]],cross='<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M22 22 L78 78 M78 22 L22 78" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>',logo='<img src="logo.png" alt="">';let b,turn,done,line,moves,receipt,round=0,mode='ai',scores={O:0,X:0,D:0};
-const win=(a,p)=>L.find(l=>l.every(i=>a[i]===p));const empty=a=>a.flatMap((v,i)=>v?[]:[i]);const outcome=a=>win(a,'O')?'O':win(a,'X')?'X':empty(a).length?'':'D';
-function render(){const shield=$('shield').checked;$('board').replaceChildren(...b.map((p,i)=>{const el=document.createElement('button');el.className='cell'+(line.includes(i)?' win':'');el.disabled=!!p||done;el.setAttribute('aria-label',`Square ${i+1}, ${!p?'empty':shield&&!done?'sealed':p==='O'?'Tacit':'X'}`);el.innerHTML=p?(shield&&!done?'<span class="sealed" aria-hidden="true">◆</span>':p==='O'?logo:cross):'';el.onclick=()=>play(i);return el}));$('os').textContent=scores.O;$('xs').textContent=scores.X;$('ds').textContent=scores.D;$('hint').textContent=shield?'Occupied squares are visible; token identities are hidden until the round ends.':'Three in a row wins. Tacit plays first.';}
-function minimax(a,p,depth=0){const o=outcome(a);if(o)return o==='X'?10-depth:o==='O'?depth-10:0;let vals=empty(a).map(i=>{let n=a.slice();n[i]=p;return minimax(n,p==='X'?'O':'X',depth+1)});return p==='X'?Math.max(...vals):Math.min(...vals)}
-function choose(){const avail=empty(b);if($('difficulty').value==='perfect'){return avail.reduce((best,i)=>{let n=b.slice();n[i]='X';let v=minimax(n,'O',1);return v>best.v?{i,v}:best},{i:avail[0],v:-Infinity}).i}for(const p of ['X','O'])for(const i of avail){let n=b.slice();n[i]=p;if(win(n,p))return i}if(!b[4])return 4;return avail[Math.floor(Math.random()*avail.length)]}
-function apply(i,p){b[i]=p;moves.push(i);const o=outcome(b);if(!o)return false;done=true;line=win(b,o)||[];scores[o]++;$('status').textContent=o==='D'?'Draw — state settled':o==='O'?'Tacit wins!':mode==='ai'?'Computer wins':'X wins!';createReceipt(o,round,moves.slice());return true}
-function play(i){if(done||b[i])return;if(!apply(i,turn)){turn=turn==='O'?'X':'O';if(mode==='ai'&&turn==='X'){if(!apply(choose(),'X'))turn='O'}}if(!done)$('status').textContent=mode==='ai'?'Your turn — Tacit':`${turn==='O'?'Tacit':'X'}’s turn`;render()}
-function reset(clear=false){round++;b=Array(9).fill('');turn='O';done=false;line=[];moves=[];receipt=null;if(clear)scores={O:0,X:0,D:0};$('status').textContent=mode==='ai'?'Your turn — Tacit':'Tacit starts';$('commitment').textContent='Awaiting a completed round.';$('copyHash').disabled=$('copyReceipt').disabled=true;$('copyStatus').textContent='';render()}
-const hex=a=>Array.from(a,x=>x.toString(16).padStart(2,'0')).join('');const canonical=r=>JSON.stringify({version:1,game:'tacit-tactics',nonce:r.nonce,moves:r.moves,outcome:r.outcome});async function digest(r){return hex(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(canonical(r)))))}
-async function createReceipt(o,id,history){try{const r={version:1,game:'tacit-tactics',nonce:hex(crypto.getRandomValues(new Uint8Array(32))),moves:history,outcome:o};r.commitment=await digest(r);if(id!==round)return;receipt=r;$('commitment').textContent=r.commitment;$('copyHash').disabled=$('copyReceipt').disabled=false}catch{if(id===round)$('commitment').textContent='Web Crypto unavailable. Open this page over HTTPS or localhost.'}}
-function validate(r){if(!r||r.version!==1||r.game!=='tacit-tactics'||typeof r.nonce!=='string'||!/^[0-9a-f]{64}$/.test(r.nonce)||!Array.isArray(r.moves)||r.moves.length<5||r.moves.length>9||typeof r.commitment!=='string'||!/^[0-9a-f]{64}$/.test(r.commitment))throw Error('Invalid receipt format.');let a=Array(9).fill('');r.moves.forEach((i,j)=>{if(!Number.isInteger(i)||i<0||i>8||a[i]||outcome(a))throw Error('Illegal move history.');a[i]=j%2?'X':'O'});if(!outcome(a)||outcome(a)!==r.outcome)throw Error('Incorrect or incomplete outcome.');}
-async function verify(){try{const r=JSON.parse($('receiptInput').value);validate(r);const hash=await digest(r),expected=$('expected').value.trim().toLowerCase();if(hash!==r.commitment)throw Error('Commitment does not match the receipt.');if(expected&&expected!==hash)throw Error('Does not match the previously shared commitment.');$('verifyStatus').textContent=`✓ Valid move history and ${expected?'matching prior commitment':'self-consistent receipt'}. Result: ${r.outcome==='D'?'draw':r.outcome==='O'?'Tacit':'X'}.`}catch(e){$('verifyStatus').textContent='✗ '+e.message}}
-async function copy(value,target){try{await navigator.clipboard.writeText(value);target.textContent='Copied.'}catch{const t=document.createElement('textarea');t.value=value;target.replaceChildren(t);t.select();}}
-$('ai').onclick=()=>{mode='ai';$('ai').setAttribute('aria-pressed','true');$('human').setAttribute('aria-pressed','false');$('difficulty').disabled=false;reset(true)};$('human').onclick=()=>{mode='human';$('ai').setAttribute('aria-pressed','false');$('human').setAttribute('aria-pressed','true');$('difficulty').disabled=true;reset(true)};$('shield').onchange=render;$('new').onclick=()=>reset();$('reset').onclick=()=>reset(true);$('verify').onclick=verify;$('copyHash').onclick=()=>receipt&&copy(receipt.commitment,$('copyStatus'));$('copyReceipt').onclick=()=>receipt&&copy(JSON.stringify(receipt,null,2),$('copyStatus'));$('share').onclick=()=>copy(location.href,$('copyStatus'));reset();
-</script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#101011">
+<meta http-equiv="Content-Security-Policy"
+content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Tacit Tactics — Privacy Arcade</title>
+<link rel="icon" href="logo.png">
+<style>
+:root {
+  color-scheme:dark;
+  --bg:#101011;
+  --accent:#ff9b24;
+  --muted:#a6a099;
+  --line:#302b25;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  min-height:100vh;
+  color:#f5efe6;
+  background:radial-gradient(ellipse at top,#282015,var(--bg) 48%);
+  font:15px/1.6 system-ui,sans-serif;
+}
+main,header,footer {
+  max-width:960px;
+  margin:auto;
+  padding:24px;
+}
+header {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid var(--line);
+}
+header img {width:42px;height:42px}
+.brand {font-size:22px;font-weight:750;letter-spacing:-1px}
+.brand b {color:var(--accent)}
+.label {
+  font:11px ui-monospace,monospace;
+  letter-spacing:2px;
+  color:var(--muted);
+}
+.hero {text-align:center;padding:48px 0}
+h1 {
+  font-size:clamp(36px,7vw,68px);
+  letter-spacing:-.06em;
+  line-height:1.05;
+  margin:18px 0;
+}
+.hero p {color:var(--muted)}
+.games {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.game {
+  background:#171719;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  color:inherit;
+  text-decoration:none;
+  transition:.2s;
+}
+.game:hover {
+  border-color:var(--accent);
+  transform:translateY(-3px);
+}
+.game:focus-visible {outline:2px solid var(--accent)}
+.preview {
+  max-width:190px;
+  margin:12px auto 28px;
+  display:grid;
+  gap:6px;
+}
+.classic {grid-template-columns:repeat(3,1fr)}
+.hunt {grid-template-columns:repeat(5,1fr)}
+.cell {
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  background:#101011;
+  border:1px solid #37322d;
+  border-radius:7px;
+  font-size:24px;
+  color:#716b63;
+}
+.cell img {width:70%}
+.cell.hit {border-color:var(--accent);color:var(--accent)}
+h2 {margin-bottom:4px;letter-spacing:-.5px}
+.description {color:var(--muted);min-height:52px}
+.action {color:var(--accent);font-weight:700}
+footer {
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+}
+@media(max-width:600px){
+  .games {grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <img src="logo.png" alt="Tacit">
+  <div class="brand">tacit<b>tactics</b></div>
+</header>
+<main>
+  <section class="hero">
+    <div class="label">BITCOIN × ETHEREUM</div>
+    <h1>Play. Prove. Verify.</h1>
+    <p>An experimental privacy arcade.</p>
+  </section>
+  <section class="games">
+    <a class="game" href="./tic-tac-toe/">
+      <div class="label">01 / CLASSIC</div>
+      <div class="preview classic" aria-hidden="true">
+        <div class="cell hit"><img src="logo.png" alt=""></div>
+        <div class="cell">×</div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell hit"><img src="logo.png" alt=""></div>
+        <div class="cell"></div>
+        <div class="cell">×</div>
+        <div class="cell"></div>
+        <div class="cell hit"><img src="logo.png" alt=""></div>
+      </div>
+      <h2>Tic-Tac-Toe</h2>
+      <p class="description">Classic strategy with cryptographic game receipts.</p>
+      <span class="action">Play now →</span>
+    </a>
+    <a class="game" href="./hunt/">
+      <div class="label">02 / ZERO-KNOWLEDGE HUNT</div>
+      <div class="preview hunt" aria-hidden="true">
+        <div class="cell">?</div><div class="cell">?</div><div class="cell">?</div><div class="cell">?</div><div class="cell">?</div>
+        <div class="cell">?</div><div class="cell hit"><img src="logo.png" alt=""></div><div class="cell">?</div><div class="cell">?</div><div class="cell">?</div>
+        <div class="cell">?</div><div class="cell">?</div><div class="cell hit"><img src="logo.png" alt=""></div><div class="cell">?</div><div class="cell">?</div>
+        <div class="cell">?</div><div class="cell">?</div><div class="cell">?</div><div class="cell hit"><img src="logo.png" alt=""></div><div class="cell">?</div>
+        <div class="cell">?</div><div class="cell">?</div><div class="cell">?</div><div class="cell">?</div><div class="cell">?</div>
+      </div>
+      <h2>Tacit Hunt</h2>
+      <p class="description">Challenge Terricola. Discover hidden assets without revealing the board.</p>
+      <span class="action">Challenge Terricola →</span>
+    </a>
+  </section>
+</main>
+<footer>
+  Unofficial fan project · No wallet required · No real funds
+</footer>
+</body>
+</html>

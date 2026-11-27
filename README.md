@@ -1,17 +1,57 @@
 # Tacit Tactics
 
-Unofficial fan-made tic-tac-toe arcade inspired by [Tacit Finance](https://tacit.finance/). Logo artwork is taken from the supplied Tacit branding reference; no affiliation or endorsement is implied.
+An unofficial Tacit-inspired privacy arcade.
 
-## Run
+**Play:** https://0xterricola.github.io/tacit-tactics/
 
-Open `index.html` in a browser. For the cryptographic receipt and clipboard functionality, use an HTTPS site or localhost (e.g. `python3 -m http.server 8000`). No dependencies or build step.
+## Games
 
-## GitHub Pages
+- Tic-Tac-Toe: classic gameplay and SHA-256 game receipts.
+- Tacit Hunt: five committed secret boards, with independently
+  verified zero-knowledge hit/miss proofs.
 
-Create a public repository `tacit-tactics`, upload the contents of this directory to the root of `main`, then select Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save. Use the Pages URL GitHub displays.
+## Cryptography
 
-## Privacy and limitations
+Tacit Hunt uses Noir, Poseidon2 commitments and Barretenberg
+UltraHonk proofs. Each probe is verified in the browser before
+the game state advances.
 
-No wallet, funds, network calls from game code, analytics, cookies, or persistent game storage. The host may log page requests. External links are optional. The shielded board is a memory challenge, not cryptographic secrecy. The SHA-256 receipt commits to a salted move transcript and verifies legal play; it is not a ZK proof, signature, timestamp, proof of identity, or on-chain settlement. A prior independently shared hash is needed to establish consistency with an earlier commitment. Revealing a receipt reveals every move. No real protocol transactions occur.
+## Architecture
 
-Protocol references: [Tacit](https://tacit.finance/), [source](https://github.com/z0r0z/tacit), [builder docs](https://tacit.finance/build/).
+- GitHub Pages: frontend and browser verifier.
+- Cloudflare Workers: challenge API.
+- Workers KV: precomputed probe responses.
+- Durable Objects: atomic session state and probe budgets.
+- Offline witness storage: never published.
+
+## Development
+
+Install dependencies:
+
+    pnpm --dir prover install --frozen-lockfile
+    pnpm --dir worker install --frozen-lockfile
+
+Run gameplay tests:
+
+    node --test hunt/tests/engine.test.mjs
+
+Build the public website:
+
+    bash scripts/build-pages.sh
+
+GitHub Actions publishes the allowlisted `_site` directory.
+
+## Limitations
+
+No wallet, real funds or on-chain settlement is required.
+Tic-Tac-Toe receipts are hash commitments, not ZK proofs.
+Tacit Hunt proofs establish response correctness, not player
+skill or globally enforced probe limits.
+
+Fixed challenges remain susceptible to repeated probing
+and answer sharing across sessions.
+
+The application uses a hosted challenge API and may retrieve
+public cryptographic reference data from Aztec infrastructure.
+
+Not affiliated with or endorsed by Tacit Finance.

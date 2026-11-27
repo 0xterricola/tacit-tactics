@@ -1,0 +1,13 @@
+{
+  "name": "tacit-hunt-prover",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@aztec-foundation/bb.js": "6.0.0",
+    "@noir-lang/noir_js": "1.0.0-rc.3"
+  },
+  "devDependencies": {
+    "vite": "7.3.3",
+    "vite-plugin-node-polyfills": "0.28.0"
+  }
+}

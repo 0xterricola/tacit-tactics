@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#101011">
+<meta http-equiv="Content-Security-Policy"
+content="default-src 'none'; img-src 'self'; style-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self' data: https://crs.aztec.network https://tacit-hunt-api.station-tech.workers.dev; base-uri 'none'; form-action 'none'">
+<title>Tacit Hunt — Challenge Terricola</title>
+<link rel="icon" href="../logo.png">
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<header>
+  <a class="brand" href="../">
+    <img src="../logo.png" alt="">
+    tacit<b>tactics</b>
+  </a>
+  <a class="label" href="../">← ARCADE</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="label">02 / THE SHIELDED ARENA</div>
+    <h1>Tacit Hunt<span>.</span></h1>
+    <p>Hidden assets. Verifiable answers.</p>
+  </section>
+
+  <div class="layout">
+    <section class="panel">
+
+<div class="label">YOUR OPPONENT</div>
+<div class="versus">
+  <div>
+    <small>HUNTER</small>
+    <strong>You</strong>
+  </div>
+  <span>VS</span>
+  <div>
+    <small>DEFENDER</small>
+    <strong id="defenderName">Computer</strong>
+  </div>
+</div>
+<div class="label">CHOOSE A SECRET BOARD</div>
+
+      <h2>Challenge Terricola</h2>
+      <div class="challenges">
+        <button data-challenge="1" aria-pressed="false">01<br>Genesis</button>
+        <button data-challenge="2" aria-pressed="false">02<br>Shadow</button>
+        <button data-challenge="3" aria-pressed="false">03<br>Phantom</button>
+        <button data-challenge="4" aria-pressed="false">04<br>Cipher</button>
+        <button data-challenge="5" aria-pressed="false">05<br>Nullifier</button>
+      </div>
+      <p class="muted"><span id="challengeAvailability">Select one of Terricola’s five secret boards. Then probe the squares below.</span></p>
+
+      <div class="separator"></div>
+      <div class="label accent" id="modeLabel">PRACTICE MODE</div>
+
+      <div class="stats">
+        <div>
+          <small>ASSETS FOUND</small>
+          <strong id="hits">0/4</strong>
+        </div>
+        <div>
+          <small>PROBES LEFT</small>
+          <strong id="remaining">12</strong>
+        </div>
+        <div>
+          <small>PROOFS</small>
+          <strong id="proofCount">—</strong>
+        </div>
+      </div>
+
+      <div id="status" role="status"></div>
+      <div id="board" class="board"
+           aria-label="Hunt board"></div>
+
+      <button id="restart" class="primary">
+        Play practice
+      </button>
+
+      <p class="muted centered">
+        Four consecutive assets. Twelve probes.
+        Search horizontally, vertically or diagonally.
+      </p>
+    </section>
+
+    <aside class="stack">
+      <section class="panel">
+        <div class="label">01 / PROTOCOL</div>
+        <h2>Verification inspector</h2>
+        <dl>
+          <dt>Opponent</dt>
+          <dd id="opponentLabel">Local machine</dd>
+          <dt>Board</dt>
+          <dd id="boardLabel">Hidden in browser memory</dd>
+          <dt>Proving system</dt>
+          <dd id="systemLabel">Not connected</dd>
+          <dt>Commitment</dt>
+          <dd id="commitmentLabel">Not generated</dd>
+          <dt>Verification</dt>
+          <dd id="verification">Practice only</dd>
+        </dl>
+        <p class="muted">
+          <span id="proofDescription">Practice responses are not cryptographic proofs.</span>
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="label">02 / ACTIVITY</div>
+        <h2>Probe history</h2>
+        <div id="history" class="history"></div>
+      </section>
+
+      <section class="panel">
+        <div class="label">03 / OBJECTIVE</div>
+        <h2>Trust mathematics.</h2>
+        <p class="muted">
+          The ZK opponent must prove every hit
+          or miss against a previously committed board
+          without revealing undiscovered assets.
+        </p>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  Unofficial Tacit fan project · No wallet · No real funds
+</footer>
+</body>
+</html>

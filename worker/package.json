@@ -1,0 +1,8 @@
+{
+  "name": "tacit-hunt-worker",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "wrangler": "4.50.0"
+  }
+}

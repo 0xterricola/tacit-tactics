@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Tacit Hunt — ZK Diagnostics</title>
+<style>
+:root {color-scheme:dark}
+body {
+  background:#101011;
+  color:#f5efe6;
+  font:15px system-ui,sans-serif;
+  max-width:800px;
+  margin:auto;
+  padding:32px;
+}
+h1 {color:#ff9b24;letter-spacing:-1px}
+a {color:#ff9b24}
+button {
+  padding:12px 20px;
+  background:#ff9b24;
+  color:#101011;
+  border:0;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+}
+pre {
+  background:#171719;
+  border:1px solid #302b25;
+  border-radius:12px;
+  padding:20px;
+  line-height:1.8;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+</style>
+<script type="module" src="./diagnostics.mjs"></script>
+</head>
+<body>
+<a href="../">← Arcade</a>
+<h1>Zero-knowledge diagnostics.</h1>
+<p>Verify your committed challenges directly in this browser.</p>
+<button id="run">Run verification</button>
+<button id="copy">Copy results</button>
+<pre id="log">Ready.</pre>
+</body>
+</html>
