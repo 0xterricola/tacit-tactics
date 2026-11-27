@@ -102,12 +102,22 @@ footer {
 @media(max-width:600px){
   .games {grid-template-columns:1fr}
 }
+
+.arcade-home {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
+}
+.arcade-home:hover {opacity:.85}
 </style>
 </head>
 <body>
 <header>
-  <img src="logo.png" alt="Tacit">
-  <div class="brand">tacit<b>tactics</b></div>
+  <a class="arcade-home" href="./" aria-label="Return to arcade"><img src="logo.png" alt="Tacit">
+  <div class="brand">tacit<b>tactics</b></div></a>
 </header>
 <main>
   <section class="hero">
