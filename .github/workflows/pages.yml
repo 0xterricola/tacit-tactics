@@ -40,6 +40,9 @@ jobs:
       - name: Build and audit public website
         run: bash scripts/build-pages.sh
 
+      - name: Verify production CSP against bundled CRS origins
+        run: node --test hunt/tests/csp.test.mjs
+
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
